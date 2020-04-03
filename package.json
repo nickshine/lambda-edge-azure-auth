@@ -1,14 +1,15 @@
 {
-  "name": "cloudfront-auth",
-  "version": "1.0.0",
-  "description": "An AWS Cloudfront Lambda@Edge function to authenticate requests using Google Apps, Microsoft, GitHub login, OKTA & Auth0",
+  "name": "lambda-edge-azure-auth",
+  "version": "0.0.1",
+  "description": "An AWS Cloudfront Lambda@Edge function to authenticate requests using Microsoft Azure.",
   "main": "index.js",
   "scripts": {
     "test": "cd tests && npm install && cd .. && node tests/tests.js",
-    "build": "npm install && cd build && npm install && cd .. && node build/build.js"
+    "build": "npm install && cd build && npm install && cd .. && node build/build.js",
+    "package": ""
   },
-  "author": "Widen Enterprises",
-  "repository": "github:widen/cloudfront-auth",
+  "author": "Nick Shine",
+  "repository": "github:nickshine/lambda-edge-azure-auth",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.1",
@@ -19,5 +20,25 @@
     "nonce": "^1.0.4",
     "querystring": "^0.2.0",
     "url": "^0.11.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/exec": "^5.0.0",
+    "@semantic-release/git": "^9.0.0",
+    "cz-conventional-changelog": "^3.1.0",
+    "husky": "^4.2.3",
+    "semantic-release": "^17.0.4"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }

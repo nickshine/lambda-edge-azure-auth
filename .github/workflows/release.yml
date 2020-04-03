@@ -1,0 +1,35 @@
+name: Release
+on:
+  push:
+    branches:
+      - '*'
+      - '!master'
+  pull_request:
+    branches: [ 'master' ]
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: Install dependencies
+        run: npm ci
+      - run: echo ${{github.ref}}
+      - name: Release Dry-Run
+        if: github.ref != 'refs/heads/master'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # CI: true
+        run: npx semantic-release --dry-run --branches ${GITHUB_REF#refs/heads/}
+      - name: Release
+        if: github.ref == 'refs/heads/master'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # CI: true
+        run: npx semantic-release
+

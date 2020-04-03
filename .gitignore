@@ -13,3 +13,4 @@ tests/logs/*
 tests/config
 /distributions
 packaged.yaml
+/dist
