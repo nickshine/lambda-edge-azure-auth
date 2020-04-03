@@ -1,12 +1,11 @@
 {
   "name": "lambda-edge-azure-auth",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "An AWS Cloudfront Lambda@Edge function to authenticate requests using Microsoft Azure.",
   "main": "index.js",
   "scripts": {
     "test": "cd tests && npm install && cd .. && node tests/tests.js",
-    "build": "npm install && cd build && npm install && cd .. && node build/build.js",
-    "package": ""
+    "build": "npm install && cd build && npm install && cd .. && node build/build.js"
   },
   "author": "Nick Shine",
   "repository": "github:nickshine/lambda-edge-azure-auth",
