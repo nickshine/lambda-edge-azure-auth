@@ -1,3 +1,10 @@
+## [0.1.1](https://github.com/nickshine/lambda-edge-azure-auth/compare/v0.1.0...v0.1.1) (2020-04-06)
+
+
+### Bug Fixes
+
+* change claim for v2.0 id_token compatibility ([892d768](https://github.com/nickshine/lambda-edge-azure-auth/commit/892d7681f75cc1c2a47ecbb57a1a5eb19e7e13fd))
+
 # [0.1.0](https://github.com/nickshine/lambda-edge-azure-auth/compare/v0.0.1...v0.1.0) (2020-04-03)
 
 
