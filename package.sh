@@ -1,20 +1,27 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
+set -eo pipefail
 
-version=${1?"Usage: $0 VERSION"}
+version=${1-$npm_package_version}
+version=${version:?"Usage: $0 VERSION"}
 
 rm -rf dist
 mkdir -p dist
 
 cp ./authz/microsoft.js ./dist/auth.js 
-cp ./authn/openid.index.js ./dist/index.js
-cp ./nonce.js ./dist/nonce.js
-cp package.json package-lock.json ./dist/
+cp ./authn/openid.index.js ./dist/main.js
+cp nonce.js package.json package-lock.json ./dist/
 
-cd dist && npm ci --production;
+cd dist
+npm ci --production
+rm package*.json
 
+cd -
+npx webpack
+
+cd dist
 zip_path="./lambda-edge-azure-auth-${version}.zip"
-zip -q -j $zip_path ./{*.js,*.json}
-zip -q -r $zip_path ./node_modules
+# zip -q -j $zip_path ./{.js,*.json}
+# zip -q -r $zip_path ./node_modules
+zip -q -j $zip_path ./index.js
 cd -

@@ -8,6 +8,9 @@ module.exports = {
       prepareCmd: "./package.sh ${nextRelease.version}"
     }],
     '@semantic-release/changelog',
+    ['@semantic-release/npm', {
+      npmPublish: false
+    }],
     ['@semantic-release/git', {
       assets: [
         'CHANGELOG.md',
