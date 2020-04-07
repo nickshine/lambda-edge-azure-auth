@@ -1,11 +1,13 @@
 {
   "name": "lambda-edge-azure-auth",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "An AWS Cloudfront Lambda@Edge function to authenticate requests using Microsoft Azure.",
+  "private": true,
   "main": "index.js",
   "scripts": {
     "test": "cd tests && npm install && cd .. && node tests/tests.js",
-    "build": "npm install && cd build && npm install && cd .. && node build/build.js"
+    "build": "npm install && cd build && npm install && cd .. && node build/build.js",
+    "package": "./package.sh"
   },
   "author": "Nick Shine",
   "repository": "github:nickshine/lambda-edge-azure-auth",
@@ -26,9 +28,12 @@
     "@semantic-release/changelog": "^5.0.1",
     "@semantic-release/exec": "^5.0.0",
     "@semantic-release/git": "^9.0.0",
+    "@semantic-release/npm": "^7.0.5",
     "cz-conventional-changelog": "^3.1.0",
     "husky": "^4.2.3",
-    "semantic-release": "^17.0.4"
+    "semantic-release": "^17.0.4",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
   },
   "husky": {
     "hooks": {
