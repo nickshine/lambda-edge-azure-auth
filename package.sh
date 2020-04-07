@@ -14,14 +14,7 @@ cp nonce.js package.json package-lock.json ./dist/
 
 cd dist
 npm ci --production
-rm package*.json
-
 cd -
+
 npx webpack
-
-cd dist
-zip_path="./lambda-edge-azure-auth-${version}.zip"
-# zip -q -j $zip_path ./{.js,*.json}
-# zip -q -r $zip_path ./node_modules
-zip -q -j $zip_path ./index.js
-cd -
+zip -q -j ./dist/lambda-edge-azure-auth-${version}.zip dist/index.js
