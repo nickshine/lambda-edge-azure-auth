@@ -1,3 +1,10 @@
+# [0.2.0](https://github.com/nickshine/lambda-edge-azure-auth/compare/v0.1.1...v0.2.0) (2020-04-07)
+
+
+### Features
+
+* add webpack config for bundling handler ([d9c51c4](https://github.com/nickshine/lambda-edge-azure-auth/commit/d9c51c4230ef42d09ec86f22025e4c48a2b34d80))
+
 ## [0.1.1](https://github.com/nickshine/lambda-edge-azure-auth/compare/v0.1.0...v0.1.1) (2020-04-06)
 
 
