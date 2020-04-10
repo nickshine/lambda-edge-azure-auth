@@ -16,10 +16,24 @@ prompt.get({
     distribution: {
       message: colors.red("Enter distribution name"),
       required: true
-    }
+    },
+    trailing_slash_redirects_enabled: {
+      description: colors.red("Enable trailing slash redirects? (e.g. www.example.com/about redirects to www.example.com/about/"),
+      type: 'boolean',
+      required: true,
+      default: true
+    },
+    simple_urls_enabled: {
+      description: colors.red("Enable simple urls (e.g. www.example.com/about/ returns www.example.com/about/index.html object)"),
+      type: 'boolean',
+      required: true,
+      default: true
+    },
   }
 }, function (err, result) {
   config.DISTRIBUTION = result.distribution;
+  config.TRAILING_SLASH_REDIRECTS_ENABLED = result.trailing_slash_redirects_enabled;
+  config.SIMPLE_URLS_ENABLED = result.simple_urls_enabled;
   shell.mkdir('-p', 'distributions/' + config.DISTRIBUTION);
   if (fs.existsSync('distributions/' + config.DISTRIBUTION + '/config.json')) {
     oldConfig = JSON.parse(fs.readFileSync('./distributions/' + config.DISTRIBUTION + '/config.json', 'utf8'));
