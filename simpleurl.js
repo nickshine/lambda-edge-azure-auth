@@ -16,7 +16,7 @@ const redirect = (request, callback) => {
 
 module.exports.handleIndexes = (uri) => {
   if (uri.endsWith('/')) {
-    console.log(`'index.html' appended to request.uri: ${request.uri}`);
+    console.log(`'index.html' appended to request.uri: ${uri}`);
     return `${uri}index.html`;
   }
 

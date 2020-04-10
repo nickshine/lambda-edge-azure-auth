@@ -10,7 +10,7 @@
 > * Stripped down to focus on Microsoft Azure __Authentication__ and __Authorization__ only.
 > * Webpack config added to bundle the handler and dependencies in to a single file.
 > * A __zip__ of the bundled lambda (sans `config.json`) [is released][releases] via a GitHub Action for use in downstream [IaC] projects like [terraform-aws-lambda-edge-azure-auth].
-> * Simple-Url handling for default `index.html` and trailing slash redirects.
+> * Simple URL (a.k.a [pretty URLs]) handling for default `index.html` and trailing slash redirects ([see below](#simple-urls-and-trailing-slash-redirects)).
 > * Downstream terraform module for deployment ([terraform-aws-lambda-edge-azure-auth]).
 
 ## Description
@@ -59,6 +59,23 @@ be automatically generated).
 
 [Manual Deployment](https://github.com/Widen/cloudfront-auth/wiki/Manual-Deployment) __*or*__ [AWS SAM Deployment](https://github.com/Widen/cloudfront-auth/wiki/AWS-SAM-Deployment)
 
+## Simple URLs and Trailing Slash Redirects
+
+This lambda function has some options that enable CloudFront to behave similar to to most static
+site web servers. When CloudFront is backed by a private __S3__ bucket using an OAI ([Origin
+Access Identity]), default `index.html` files are not resolved unless given explicitly in the url
+
+For example, a request for `https://example.com/about/` tries to retrieve an object `about/` in
+the bucket, not `about/index.html`) 
+
+With the `simple_urls_enabled` option enabled (defaults to `true`):
+
+* `https://example.com/about/` will return the `https://example.com/about/index.html` object
+
+With `trailing_slash_redirects_enabled`:
+
+* `https://example.com/about` will trigger a `301` redirect to `https://example.com/about/`
+
 ## Testing
 
 Detailed instructions on testing your function can be found [in the Wiki](https://github.com/Widen/cloudfront-auth/wiki/Debug-&-Test).
@@ -82,6 +99,8 @@ See [CONTRIBUTING.md](Contributing.md).
 [node]:https://nodejs.org/en/
 [npm]:https://www.npmjs.com/
 [oai]:http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html#private-content-creating-oai-console
+[origin access identity]:https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html
 [openssl]:https://www.openssl.org
+[pretty urls]:https://gohugo.io/content-management/urls/#pretty-urls
 [terraform-aws-lambda-edge-azure-auth]:https://registry.terraform.io/modules/nickshine/lambda-edge-azure-auth/aws/
 [releases]:https://github.com/nickshine/lambda-edge-azure-auth/releases
