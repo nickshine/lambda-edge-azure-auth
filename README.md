@@ -3,17 +3,15 @@
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=flat-square)](https://github.com/semantic-release/semantic-release)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square)](http://commitizen.github.io/cz-cli/)
 
-
 [Microsoft Azure AD][azure] authentication for [CloudFront] using [Lambda@Edge].
 
->This project is based on the upstream [cloudfront-auth], but has diverged in the following ways:
+>This project is based on [Widen/cloudfront-auth][cloudfront-auth], but has diverged in the following ways:
 >
 > * Stripped down to focus on Microsoft Azure __Authentication__ and __Authorization__ only.
-> * Serverless Webpack added to streamline the final lambda package with [Tree-Shaking].
-> * Interactive prompt for generating `config.json` removed in favor of a templated config rendered
->  in CI pipelines.
+> * Webpack config added to bundle the handler and dependencies in to a single file.
+> * A __zip__ of the bundled lambda (sans `config.json`) [is released][releases] via a GitHub Action for use in downstream [IaC] projects like [terraform-aws-lambda-edge-azure-auth].
 > * Simple-Url handling for default `index.html` and trailing slash redirects.
-> * Downstream terraform module for deployment.
+> * Downstream terraform module for deployment ([terraform-aws-lambda-edge-azure-auth]).
 
 ## Description
 
@@ -48,7 +46,7 @@ be automatically generated).
     1. Once created, go to your application `Settings -> Certificates & Secrets` and make a new **client secret** with your desired duration. Click save and copy the value. This will be your `client_secret`
     1. Click on **Overview**, go to `Redirect URIs` and enter your Cloudfront hostname with your
     preferred path value for the authorization callback.
-        >Example: https://my-cloudfront-site.example.com/_callback
+        >Example: `https://my-cloudfront-site.example.com/_callback`
 1. Execute `./build.sh` in the downloaded directory. NPM will run to download dependencies and a RSA key will be generated.
 1. Choose `Microsoft` as the authorization method and enter the values for [Tenant][azure-tenant], Client ID (**Application ID**), Client Secret (**previously created key**), Redirect URI and Session Duration
 1. Select the preferred authentication method
@@ -61,38 +59,29 @@ be automatically generated).
 
 [Manual Deployment](https://github.com/Widen/cloudfront-auth/wiki/Manual-Deployment) __*or*__ [AWS SAM Deployment](https://github.com/Widen/cloudfront-auth/wiki/AWS-SAM-Deployment)
 
-## Authorization Method Examples
-
-- [Use Google Groups to authorize users](https://github.com/Widen/cloudfront-auth/wiki/Google-Groups-Setup)
-
-- JSON array of email addresses
-
-    ```
-    [ "foo@gmail.com", "bar@gmail.com" ]
-    ```
-
 ## Testing
 
 Detailed instructions on testing your function can be found [in the Wiki](https://github.com/Widen/cloudfront-auth/wiki/Debug-&-Test).
 
 ## Build Requirements
 
- - [npm](https://www.npmjs.com/) ^5.6.0
- - [node](https://nodejs.org/en/) ^10.0
- - [openssl](https://www.openssl.org)
+* [npm] ^5.6.0
+* [node] ^10.0
+* [openssl]
 
 ## Contributing
 
-All contributions are welcome. Please create an issue in order open up communication with the community.
-
-When implementing a new flow or using an already implemented flow, be sure to follow the same style used in `build.js`. The config.json file should have an object for each request made. For example, `openid.index.js` converts config.AUTH_REQUEST and config.TOKEN_REQUEST to querystrings for simplified requests (after adding dynamic variables such as state or nonce). For implementations that are not generic (most), endpoints are hardcoded in to the config (or discovery documents).
-
-Be considerate of our [limitations](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cloudfront-limits.html#limits-lambda-at-edge). The zipped function can be no more than 1MB in size and execution cannot take longer than 5 seconds, so we must pay close attention to the size of our dependencies and complexity of operations.
+See [CONTRIBUTING.md](Contributing.md).
 
 [azure]:https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-oauth-code
 [azure-tenant]:https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-howto-tenant
 [cloudfront]:https://aws.amazon.com/cloudfront/
 [cloudfront-auth]:https://github.com/Widen/cloudfront-auth
-[lambda@edge]:https://webpack.js.org/guides/tree-shaking/
+[IaC]:https://en.wikipedia.org/wiki/Infrastructure_as_code
+[lambda@edge]:https://aws.amazon.com/lambda/edge/
+[node]:https://nodejs.org/en/
+[npm]:https://www.npmjs.com/
 [oai]:http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html#private-content-creating-oai-console
-[tree-shaking]:https://webpack.js.org/guides/tree-shaking/
+[openssl]:https://www.openssl.org
+[terraform-aws-lambda-edge-azure-auth]:https://registry.terraform.io/modules/nickshine/lambda-edge-azure-auth/aws/
+[releases]:https://github.com/nickshine/lambda-edge-azure-auth/releases

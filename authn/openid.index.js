@@ -5,6 +5,7 @@ const cookie = require('cookie');
 const jwkToPem = require('jwk-to-pem');
 const auth = require('./auth.js');
 const nonce = require('./nonce.js');
+const simpleUrl = require('./simpleurl.js');
 const axios = require('axios');
 var discoveryDocument;
 var jwks;
@@ -229,6 +230,12 @@ function mainProcess(event, context, callback) {
             unauthorized('Unauthorized.', 'User ' + decoded.sub + ' is not permitted.', '', callback);
         }
       } else {
+        if (config.TRAILING_SLASH_REDIRECTS_ENABLED) {
+          simpleUrl.handleRedirect(request, callback)
+        }
+        if (config.SIMPLE_URLS_ENABLED) {
+          request.uri = simpleUrl.handleIndexes(request.uri)
+        }
         console.log("Authorizing user.");
         auth.isAuthorized(decoded, request, callback, unauthorized, internalServerError, config);
       }
