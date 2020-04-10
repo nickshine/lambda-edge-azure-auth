@@ -1,3 +1,15 @@
+# [0.3.0](https://github.com/nickshine/lambda-edge-azure-auth/compare/v0.2.0...v0.3.0) (2020-04-10)
+
+
+### Bug Fixes
+
+* copy simpleurl.js to distribution on build/package ([160484b](https://github.com/nickshine/lambda-edge-azure-auth/commit/160484bb5af14f1fbc4950ffb4202ad449e10483))
+
+
+### Features
+
+* add simple-url handling and non-trailing slash redirect option ([06cd901](https://github.com/nickshine/lambda-edge-azure-auth/commit/06cd9019b5441affa62c1e43e3e6d31b0ca588a8))
+
 # [0.2.0](https://github.com/nickshine/lambda-edge-azure-auth/compare/v0.1.1...v0.2.0) (2020-04-07)
 
 
