@@ -99,6 +99,7 @@ function microsoftConfiguration() {
     shell.cp('./authz/microsoft.js', './distributions/' + config.DISTRIBUTION + '/auth.js');
     shell.cp('./authn/openid.index.js', './distributions/' + config.DISTRIBUTION + '/index.js');
     shell.cp('./nonce.js', './distributions/' + config.DISTRIBUTION + '/nonce.js');
+    shell.cp('./simpleurl.js', './distributions/' + config.DISTRIBUTION + '/simpleurl.js');
 
     fs.writeFileSync('distributions/' + config.DISTRIBUTION + '/config.json', JSON.stringify(result, null, 4));
     writeConfig(config, zip, ['config.json', 'index.js', 'auth.js', 'nonce.js']);
