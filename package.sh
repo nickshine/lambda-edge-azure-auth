@@ -10,7 +10,7 @@ mkdir -p dist
 
 cp ./authz/microsoft.js ./dist/auth.js 
 cp ./authn/openid.index.js ./dist/main.js
-cp nonce.js package.json package-lock.json ./dist/
+cp nonce.js simpleurl.js package.json package-lock.json ./dist/
 
 cd dist
 npm ci --production
