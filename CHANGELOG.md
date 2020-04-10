@@ -1,3 +1,10 @@
+## [0.3.1](https://github.com/nickshine/lambda-edge-azure-auth/compare/v0.3.0...v0.3.1) (2020-04-10)
+
+
+### Bug Fixes
+
+* remove incorrect parameter reference in simpleurl.js ([020ab20](https://github.com/nickshine/lambda-edge-azure-auth/commit/020ab20b1a9efa4fa31131524e4137f79185dff8))
+
 # [0.3.0](https://github.com/nickshine/lambda-edge-azure-auth/compare/v0.2.0...v0.3.0) (2020-04-10)
 
 
