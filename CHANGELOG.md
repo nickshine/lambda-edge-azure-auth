@@ -1,3 +1,10 @@
+## [0.3.3](https://github.com/nickshine/lambda-edge-azure-auth/compare/v0.3.2...v0.3.3) (2020-10-05)
+
+
+### Bug Fixes
+
+* updates for audit findings ([4e51790](https://github.com/nickshine/lambda-edge-azure-auth/commit/4e51790c2cb9d789fadaf467989a66f44b4594c0))
+
 ## [0.3.2](https://github.com/nickshine/lambda-edge-azure-auth/compare/v0.3.1...v0.3.2) (2020-10-05)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "lambda-edge-azure-auth",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "An AWS Cloudfront Lambda@Edge function to authenticate requests using Microsoft Azure.",
   "private": true,
   "main": "index.js",
