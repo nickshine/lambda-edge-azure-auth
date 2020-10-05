@@ -12,7 +12,7 @@ to the size of our dependencies and complexity of operations.
 ## Commit Message Guidelines
 
 This project follows the [Conventional Commits] specification to aid in automated releases and
-change log generation. [Commitlint] is enabled and ran as a `commit-msg` hook to enforce the
+change log generation. [Commitlint] is enabled and ran as a `commit-msg` git hook to enforce the
 commit format. [Commitizen] can be used to prompt through any requirements at commit time `npm
 run cm` (or `git cz` if Commitizen is installed globally).
 
