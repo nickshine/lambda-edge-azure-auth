@@ -3,7 +3,7 @@ function isAuthorized(decoded, request, callback, unauthorized, internalServerEr
 }
 
 function getSubject(decoded) {
-  return decoded.payload.upn || decodec.payload.sub;
+  return decoded.payload.upn || decoded.payload.sub;
 }
 
 exports.isAuthorized = isAuthorized;
