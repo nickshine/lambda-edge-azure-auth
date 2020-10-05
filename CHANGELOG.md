@@ -1,3 +1,10 @@
+## [0.3.2](https://github.com/nickshine/lambda-edge-azure-auth/compare/v0.3.1...v0.3.2) (2020-10-05)
+
+
+### Bug Fixes
+
+* correct authz fallback claim ([26cbf71](https://github.com/nickshine/lambda-edge-azure-auth/commit/26cbf7119353514a93308a996504b4329f381e73))
+
 ## [0.3.1](https://github.com/nickshine/lambda-edge-azure-auth/compare/v0.3.0...v0.3.1) (2020-04-10)
 
 
