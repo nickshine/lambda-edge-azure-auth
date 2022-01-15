@@ -18,6 +18,6 @@
     "opn": "^5.2.0",
     "prompt": "^1.0.0",
     "querystring": "^0.2.0",
-    "shelljs": "^0.8.1"
+    "shelljs": "^0.8.5"
   }
 }
