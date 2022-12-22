@@ -16,7 +16,7 @@
     "axios": "^0.21.2",
     "cookie": "^0.4.1",
     "crypto": "^1.0.1",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "jwk-to-pem": "^2.0.4",
     "nonce": "^1.0.4",
     "querystring": "^0.2.0",
