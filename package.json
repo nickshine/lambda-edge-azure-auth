@@ -32,8 +32,8 @@
     "cz-conventional-changelog": "^3.3.0",
     "husky": "^4.3.0",
     "semantic-release": "^17.1.2",
-    "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12"
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
   },
   "husky": {
     "hooks": {
